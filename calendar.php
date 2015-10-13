@@ -1,3 +1,9 @@
+<?php
+//login check stuff goes here. Untill then, we will manually create the session data
+session_start();
+$_SESSION['username'] = "epadz";
+$_SESSION['uid'] = "1";
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -39,6 +45,65 @@ function updateCalendar(){
 $(function(){
 	updateCalendar();
 });
+
+//makes an event
+//ev data = json with data of event
+//returns an html element
+function makeEvent(evData){
+	ev = document.createElement("div");//event
+	ev.className = "event";
+	
+	et = document.createElement("div");//time
+	et.className = "evTime";
+	
+	eh = document.createElement("div");//hour
+	eh.className = "evTimes";
+	eh.innerHTML = evData.hour;
+	
+	em = document.createElement("div");//minute
+	em.className = "evTimes";
+	em.innerHTML = evData.minute;
+	
+	ea = document.createElement("div");//second
+	ea.className = "evTimes";
+	ea.innerHTML = evData.AMPM;
+	
+	ed = document.createElement("div");//details
+	ed.className = "evDetails";
+	
+	en = document.createElement("div");//title
+	en.className = "evTitle";
+	en.innerHTML = evData.title;
+	
+	ep = document.createElement("div");//description
+	ep.className = "evDesc";
+	ep.innerHTML = evData.desc;
+	
+	et.appendChild(eh);
+	et.appendChild(em);
+	et.appendChild(ea);
+	
+	ed.appendChild(en);
+	ed.appendChild(ep);
+	
+	ev.appendChild(et);
+	ev.appendChild(ed);
+	
+	return ev;
+}
+
+var sample = {
+			"eventID":2,
+			"title":"party",
+			"desc":"haloween party",
+			"year":"2015",
+			"month":"9",
+			"day":"12",
+			"hour":"10",
+			"minute":"30",
+			"AMPM":"pm"
+			};
+
 </script>
 <style>
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,700);
@@ -54,7 +119,7 @@ body{
 	top:100px;
 	margin:0 0 0 -450px;
 	border-radius:10px;
-	overflow:hidden;
+	/*overflow:hidden;*/
 	border:2px solid #FFF;
 }
 #background{
@@ -89,6 +154,11 @@ body{
 	font-size:30px;
 	cursor:pointer;
 	font-weight:700;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 #month{
 	width:774px;
@@ -161,6 +231,113 @@ body{
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
 }
+.evMark{
+	height:50px;
+	width:50px;
+	text-align:center;
+	float:left;
+	position:absolute;
+	color:#FFFFFF;
+	border-radius:50px;
+	background-color:#FF66CC;
+	opacity:.7;
+	font-size:40px;
+	line-height:50px;
+	margin:6px 31px 6px 31px;
+	cursor:pointer;
+	-webkit-transition: width .5s, height .5s, border-radius .5s, margin .5s;
+	-webkit-transition-timing-function:ease-in-out;
+	transition: width .5s, height .5s, border-radius .5s, margin .5s;
+	transition-timing-function:ease-in-out;
+	-moz-transition: width .5s, height .5s, border-radius .5s, margin .5s;
+	-moz-transition-timing-function:ease-in-out;
+	z-index:1000;
+	overflow:hidden;
+}
+.evMark:hover{
+	height:500px;
+	width:500px;
+	margin:-244px 0 0 -219px;
+	border-radius:20px;
+	opacity:.9;
+}
+.evNum{
+	height:50px;
+	width:50px;
+	text-align:center;
+	float:left;
+	position:absolute;
+	color:#FFFFFF;
+	font-size:40px;
+	line-height:50px;
+	display:block;
+}
+.evMark:hover .evNum{
+	display:none;
+}
+.events{
+	width:480px;
+	height:480px;
+	margin:10px;
+	display:none;
+	position:absolute;
+	float:left;
+	opacity:0;
+	-webkit-transition:opacity 0s;
+	-webkit-transition-delay:.5s;
+}
+.evMark:hover .events{
+	display:block;
+	opacity:1;
+}
+.event{
+	width:480px;
+	height:75px;
+	position:relative;
+	float:left;
+	background-color:#9FF;
+}
+.evTime{
+	width:30px;
+	height:75px;
+	position:relative;
+	float:left;	
+	background-color:#336699;
+	
+}
+.evTimes{
+	width:30px;
+	height:25px;
+	line-height:25px;
+	font-size:20px;
+	position:relative;
+	float:left;
+}
+.evDetails{
+	width:450px;
+	height:50px;
+	position:relative;
+	float:left;
+	
+}
+.evTitle{
+	width:450px;
+	height:25px;
+	line-height:25px;
+	font-size:24px;
+	text-align:center;
+	color:#FFF;
+	position:relative;
+	float:left:
+}
+.evDesc{
+	width:450px;
+	height:50px;
+	position:relative;
+	float:left;
+	line-height:18px;
+	font-size:16px;
+}
 </style>
 </head>
 
@@ -209,6 +386,21 @@ body{
                 <div class="week">
                 	<div class="day">
                     	<div class="date"></div>
+                        <div class="evMark"><div class="evNum">5</div>
+                        	<div class="events">
+                            	<div class="event">
+                                	<div class="evTime">
+                                    	<div class="evTimes">12</div>
+                                        <div class="evTimes">33</div>
+                                        <div class="evTimes">pm</div>
+                                    </div>
+                                    <div class="evDetails">
+                                    	<div class="evTitle">adsfasdf</div>
+                                        <div class="evDesc">asdfasdfasdfasdfasdfasdfasdfsadf</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
