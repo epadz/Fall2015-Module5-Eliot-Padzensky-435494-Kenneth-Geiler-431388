@@ -1,5 +1,13 @@
 <?php
-$mysqli = new mysqli("localhost", "epadz", "epadz", "module5");
+//require "config.php"
+$mysqli = new mysqli("localhost", "wustl_inst", "wustl_pass", "module5");
+if($mysqli->connect_errno) {
+        printf("Connection Failed: %s\n", $mysqli->connect_error);
+        exit;
+}
+
+
+
 session_start();
 
 if(!isset($_POST['username']) || !isset($_POST['password'])){
