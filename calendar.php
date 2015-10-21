@@ -163,6 +163,24 @@ if(!isset($_SESSION['username'])){
         </div>
     </div>
     
+    <div id="addNew">
+    	<table>
+        	<tr>
+                <td><input type="text" id="neTitle" placeholder="title"></td>
+            </tr>
+            <tr>
+            	<td><textarea id="neNote" placeholder="note"></textarea></td>
+            </tr>
+            <tr>
+            	<td><input type="text" id="neDate" placeholder="date" ></td>
+            </tr>
+            <tr>
+            	<td><input type="number" id="neHour" min="1" max="12"></td>
+                <td><input type="number" id="neMin" min="1" max="12"></td>
+                <td><input type="number" id="neAMPM" min="1" max="12"></td>
+            </tr>
+        </table>
+    </div>
     <script type="text/javascript">
 		$("#navl").click(function(){lastMonth();});
 		$("#navr").click(function(){nextMonth();});

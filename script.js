@@ -29,6 +29,12 @@ function updateCalendar(){
 		i++;
 	}
 	getEvents(month.month);
+	$(".day").attr("title","click to add an event");
+	$(".day").click(function(e){
+		var td = e.target.dataset.day;
+		var tm = e.target.dataset.month;
+		$("#addNew").css("display","block");
+	});
 }
 $(function(){
 	updateCalendar();
@@ -65,7 +71,7 @@ function makeEvent(evData){
 	
 	ep = document.createElement("div");//description
 	ep.className = "evDesc";
-	ep.innerHTML = evData.desc;
+	ep.innerHTML = evData.note;
 	
 	et.appendChild(eh);
 	et.appendChild(em);

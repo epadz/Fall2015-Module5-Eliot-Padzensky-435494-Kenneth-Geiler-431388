@@ -9,7 +9,7 @@ $username = $_SESSION['username'];
 $month = $_GET['month'];
 
 //database connection info
-$mysqli = new mysqli("localhost", "epadz", "epadz", "module5");
+require "config.php";
 
 //query the events where month = month and uid= uid
 $stmt = $mysqli->prepare("select * from events where userID=? and month=?");

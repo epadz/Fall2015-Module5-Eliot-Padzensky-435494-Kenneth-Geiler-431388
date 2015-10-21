@@ -112,6 +112,7 @@ body{
 	border:solid 4px #FFFFFF;
 	position:relative;
 	float:left;
+	cursor:pointer;
 }
 .date{
 	width:112px;
@@ -191,6 +192,7 @@ body{
 	position:relative;
 	float:left;
 	background-color:#9FF;
+	margin:5px 0 5px 0;
 }
 .evTime{
 	width:30px;
