@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Login</title>
-<link href="includes/style.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -45,7 +45,7 @@
         <tr><td colspan="2"><hr /></td></tr>
         </table>
         </form>
-        <form action="register.php" method="post" id="login_form">
+        <form action="register.php" method="post" id="reg_form">
         <table>
             <tr><td colspan="2">register</td></tr>
             <tr>
