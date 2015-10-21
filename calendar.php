@@ -1,8 +1,10 @@
 <?php
 //login check stuff goes here. Untill then, we will manually create the session data
 session_start();
-$_SESSION['username'] = "epadz";
-$_SESSION['uid'] = "1";
+$loggedIn = true;
+if(!isset($_SESSION['username'])){
+	$loggedIn = false;
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -18,6 +20,12 @@ $_SESSION['uid'] = "1";
 </head>
 
 <body>
+    <?php if($loggedIn){
+		echo'<a href="logout.php">logout</a>';
+	}else{
+		echo'<a href="login.php">log in or register</a>';
+	}
+	?>
 	<div id="wrap">
     	<div id="background"></div>
     	<div id="top">

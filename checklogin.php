@@ -1,6 +1,6 @@
 <?php
-$mysqli = new mysqli("localhost", "epadz", "epadz", "module5");
 session_start();
+require "config.php";
 
 if(!isset($_POST['username']) || !isset($_POST['password'])){
 	header("Location: login.php?error=1");
@@ -11,7 +11,7 @@ $un = $_POST['username'];
 $pw = $_POST['password'];
 
 //checks if the user exists
-$stmt = $mysqli->prepare("select * from users where user_name=?");
+$stmt = $mysqli->prepare("select * from users where username=?");
 if(!$stmt){
 	printf("Query Prep Failed: %s\n", $mysqli->error);
 	exit;
