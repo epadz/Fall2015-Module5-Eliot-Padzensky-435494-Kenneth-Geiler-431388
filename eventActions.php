@@ -7,22 +7,22 @@ if(!isset($_SESSION['uid']) || !isset($_POST['uid']) || !isset($_POST['a'])){
 	echo 0;
 }else{
 	if($_POST['a'] == '0'){
-		$stmt = $mysqli->prepare("insert into events (userID, title, note, year, month, day, hour, minute, ampm) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+		$stmt = $mysqli->prepare("insert into events (userID, title, note, year, month, day, hour, minute, ampm, tag) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
 			exit;
 		}
-		$stmt->bind_param('issiiiiis', $_POST['uid'], $_POST['neT'], $_POST['neN'], $_POST['neDY'], $_POST['neDM'], $_POST['neDD'], $_POST['neH'], $_POST['neM'], $_POST['neA']);
+		$stmt->bind_param('issiiiiiss', $_POST['uid'], $_POST['neT'], $_POST['neN'], $_POST['neDY'], $_POST['neDM'], $_POST['neDD'], $_POST['neH'], $_POST['neM'], $_POST['neA'], $_POST['neC']);
 		$qSuccess = $stmt->execute();
 		echo $qSuccess;
 		$stmt->close();
 	}else if($_POST['a'] == '1'){
-		$stmt = $mysqli->prepare("update events set title=?, note=?, year=?, month=?, day=?, hour=?, minute=?, ampm=? where eventID=?");
+		$stmt = $mysqli->prepare("update events set title=?, note=?, year=?, month=?, day=?, hour=?, minute=?, ampm=?, tag=? where eventID=?");
 		if(!$stmt){
 			printf("Query Prep Failed: %s\n", $mysqli->error);
 			exit;
 		}
-		$stmt->bind_param('ssiiiiisi', $_POST['neT'], $_POST['neN'], $_POST['neDY'], $_POST['neDM'], $_POST['neDD'], $_POST['neH'], $_POST['neM'], $_POST['neA'], $_POST['eid']);
+		$stmt->bind_param('ssiiiiissi', $_POST['neT'], $_POST['neN'], $_POST['neDY'], $_POST['neDM'], $_POST['neDD'], $_POST['neH'], $_POST['neM'], $_POST['neA'], $_POST['neC'], $_POST['eid']);
 		$qSuccess = $stmt->execute();
 		echo $qSuccess;
 		$stmt->close();
