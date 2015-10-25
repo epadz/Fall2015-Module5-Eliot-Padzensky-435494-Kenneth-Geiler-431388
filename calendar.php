@@ -19,6 +19,7 @@ if(!isset($_SESSION['username'])){
 <link href="style.css" rel="stylesheet" type="text/css">
 <script>
 var uid = <?php echo (isset($_SESSION['uid']) ? $_SESSION['uid'] : 'null'); ?>;
+var username = <?php echo (isset($_SESSION['username']) ? ("'" . $_SESSION['username'] . "'") : 'null'); ?>;
 </script>
 </head>
 
@@ -219,9 +220,11 @@ var uid = <?php echo (isset($_SESSION['uid']) ? $_SESSION['uid'] : 'null'); ?>;
                 <tr>
                 	<td>
                     	<select id="neTag">
-                        	<option>no tag</option>
+                        	<option value="none">no tag</option>
                     		<option value="meeting">meeting</option>
-                            <option value="other">other</option>
+                            <option value="birthday">birthday</option>
+                            <option value="important">important</option>
+                            <option value="reminder">reminder</option>
                         </select>
                     </td>
                 </tr>
