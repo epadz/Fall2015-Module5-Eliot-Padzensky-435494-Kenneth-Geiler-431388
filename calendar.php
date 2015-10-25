@@ -11,12 +11,15 @@ if(!isset($_SESSION['username'])){
 <head>
 <meta charset="utf-8">
 <title>Calendar</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/flick/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script src="calendar.js"></script>
 <script src="script.js" ></script>
 <link href="style.css" rel="stylesheet" type="text/css">
+<script>
+var uid = <?php echo (isset($_SESSION['uid']) ? $_SESSION['uid'] : 'null'); ?>;
+</script>
 </head>
 
 <body>
@@ -47,139 +50,189 @@ if(!isset($_SESSION['username'])){
             	<div class="week">
                 	<div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                 </div>
                 <div class="week">
                 	<div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                 </div>
                 <div class="week">
                 	<div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                 </div>
                 <div class="week">
                 	<div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                 </div>
                 <div class="week">
                 	<div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                     <div class="day">
                     	<div class="date"></div>
+                        <div class="addEv"></div>
                     </div>
                 </div>                
             </div>
         </div>
-    </div>
-    
-    <div id="addNew">
-    	<table>
-        	<tr>
-                <td><input type="text" id="neTitle" placeholder="title"></td>
-            </tr>
-            <tr>
-            	<td><textarea id="neNote" placeholder="note"></textarea></td>
-            </tr>
-            <tr>
-            	<td><input type="text" id="neDate" placeholder="date" ></td>
-            </tr>
-            <tr>
-            	<td><input type="number" id="neHour" min="1" max="12"></td>
-                <td><input type="number" id="neMin" min="1" max="12"></td>
-                <td><input type="number" id="neAMPM" min="1" max="12"></td>
-            </tr>
-        </table>
+        <div id="addNew">
+            <table>
+            	<tr>
+                	<td><div id="epaneTitle">new item</div></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="neTitle" placeholder="title" maxlength="149"></td>
+                </tr>
+                <tr>
+                    <td><textarea id="neNote" placeholder="note"></textarea></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="neDate" placeholder="date" ></td>
+                </tr>
+                <tr>
+                    <td><input type="number" id="neHour" min="1" max="12" value="4">:<input type="number" id="neMin" min="0" max="59" value="30" step="10"><select id="neAMPM"><option value="am">am</option><option value="pm" selected>pm</option></select></td>
+                </tr>
+                <tr>
+                	<td>
+                    	<select id="neTag">
+                        	<option>no tag</option>
+                    		<option value="meeting">meeting</option>
+                            <option value="other">other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                	<td><div class="button" id="addButton">add</div></td>
+                </tr>
+                <tr>
+                	<td><div class="button" id="deleteButton">discard</div></td>
+                </tr>
+            </table>
+        </div>
     </div>
     <script type="text/javascript">
 		$("#navl").click(function(){lastMonth();});

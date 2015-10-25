@@ -5,6 +5,11 @@
 body{
 	background-image:url(background.png);
 	font-family:"Roboto", sans-serif;
+	margin:0;
+	padding:0;
+	perspective: 1000;
+	-webkit-perspective: 1000;
+	-moz-perspective: 1000;
 }
 #wrap{
 	width:910px;
@@ -16,11 +21,14 @@ body{
 	border-radius:10px;
 	/*overflow:hidden;*/
 	border:2px solid #FFF;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
 }
 #background{
 	position:absolute;
-	width:910px;
-	height:600px;
+	width:100%;
+	height:100%;
 	background-color:#D0E2F2;
 	opacity:.4;
 	filter:blur(40); 
@@ -127,6 +135,25 @@ body{
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
 }
+.addEv{
+	position:absolute;
+	width:20px;
+	height:20px;
+	right:5px;
+	top:23px;
+	border-radius:20px;
+	padding:0;
+	margin:0;
+	background-color:#ffffff;
+	color:#D0E2F2;
+	text-align:center;
+	line-height:20px;
+	font-size:18px;
+	font-weight:700;
+}
+.addEv:after{
+	content:'+'
+}
 .evMark{
 	height:50px;
 	width:50px;
@@ -147,7 +174,7 @@ body{
 	transition-timing-function:ease-in-out;
 	-moz-transition: width .5s, height .5s, border-radius .5s, margin .5s;
 	-moz-transition-timing-function:ease-in-out;
-	z-index:1000;
+	z-index:900;
 	overflow:hidden;
 }
 .evMark:hover{
@@ -156,6 +183,7 @@ body{
 	margin:-244px 0 0 -219px;
 	border-radius:20px;
 	opacity:.9;
+	z-index:1000;
 }
 .evNum{
 	height:50px;
@@ -181,13 +209,14 @@ body{
 	opacity:0;
 	-webkit-transition:opacity 0s;
 	-webkit-transition-delay:.5s;
+	overflow-y:scroll;
 }
 .evMark:hover .events{
 	display:block;
 	opacity:1;
 }
 .event{
-	width:480px;
+	width:460px;
 	height:75px;
 	position:relative;
 	float:left;
@@ -211,14 +240,14 @@ body{
 	float:left;
 }
 .evDetails{
-	width:450px;
+	width:410px;
 	height:50px;
 	position:relative;
 	float:left;
 	
 }
 .evTitle{
-	width:450px;
+	width:410px;
 	height:25px;
 	line-height:25px;
 	font-size:24px;
@@ -228,10 +257,130 @@ body{
 	float:left:
 }
 .evDesc{
-	width:450px;
+	width:410px;
 	height:50px;
 	position:relative;
 	float:left;
 	line-height:18px;
 	font-size:16px;
+}
+.evTools{
+	width:20px;
+	height:75px;
+	position:relative;
+	float:left;
+	margin:0;
+}
+.evTool{
+	width:20px;
+	height:25px;
+	margin:0;
+	position:relative;
+	float:left;
+	font-size:20px;
+	line-height:25px;
+	text-align:center;
+}
+#addNew{
+	position:relative;
+	width:300px;
+	height:600px;
+	display:none;
+	margin:0px;
+	padding:0px;
+}
+#epaneTitle{
+	width:300px;
+	color:#fff;
+	height:50px;
+	border-bottom:solid 2px #fff;
+	line-height:50px;
+	font-size:30px;
+	margin:0px;
+	padding:0px;
+	text-align:center;
+}
+#addNew table{
+	width:300px;
+	padding:0;
+	margin:0;
+}
+#addNew tr{
+	margin:0;
+	padding:0;
+	width:300px;
+}
+#addNew td{
+	margin:0;
+	padding:0;
+}
+#neTitle, #neNote, #neDate{
+	width:280px;
+}
+input{
+	height:25px;
+	margin:4px;
+	font-size:16px;
+	border:solid 1px #999999;
+	padding:2px 3px 3px 2px;
+	border-radius:5px;
+	-ms-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	-webkit-box-sizing:content-box; 
+	box-sizing:content-box;
+	position:relative;
+	font-family:"roboto";
+}
+textarea{
+	height:250px;
+	resize:none;
+	margin:4px;
+	font-size:16px;
+	border:solid 1px #999999;
+	padding:2px 3px 3px 2px;
+	border-radius:5px;
+	-ms-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	-webkit-box-sizing:content-box; 
+	box-sizing:content-box;
+	position:relative;
+	font-family:"roboto";
+}
+select{
+	height:25px;
+	margin:4px;
+	font-size:16px;
+	border:solid 1px #999999;
+	padding:2px 3px 3px 2px;
+	border-radius:5px;
+	-ms-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	-webkit-box-sizing:content-box; 
+	box-sizing:content-box;
+	position:relative;
+	font-family:"roboto";
+}
+#neHour, #neMinute, #neAMPM{
+	width:60px;
+}
+#neTag{
+	width:280px;
+}
+.button{
+	padding: 10px;
+	border-radius: 5px;
+	text-decoration: none;
+	color: white;
+	cursor:pointer;
+	text-align:center;
+}
+#addButton{
+	width:268px;
+	margin:4px;
+	background-color: #428bca;
+}
+#deleteButton{
+	width:268px;
+	margin:4px;
+	background-color: #FF3333;
 }
