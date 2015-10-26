@@ -5,6 +5,7 @@ $loggedIn = true;
 if(!isset($_SESSION['username'])){
 	$loggedIn = false;
 }
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -28,7 +29,7 @@ var username = <?php echo (isset($_SESSION['username']) ? ("'" . $_SESSION['user
 
 <body>
     <?php if($loggedIn){
-		echo'<a href="logout.php">logout</a>';
+		echo'<a href="./logout.php">logout</a>';
 	}else{
 		echo'<a href="login.php">log in or register</a>';
 	}

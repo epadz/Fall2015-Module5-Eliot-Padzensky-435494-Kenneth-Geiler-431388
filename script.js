@@ -1,4 +1,19 @@
 // JavaScript Document
+//
+
+// defend against csrf attacks
+var CSRF_HEADER = 'X-CSRF-Token';
+
+var setCSRFToken = function(securityToken) {
+  jQuery.ajaxPrefilter(function(options, _, xhr) {
+    if ( !xhr.crossDomain ) 
+        xhr.setRequestHeader(CSRF_HEADER, securityToken);
+  });
+};
+
+setCSRFToken($('meta[name="csrf-token"]').attr('content'));
+
+
 var state = 0; //0 = calendar, 1 = event add/edit
 var month = new Month(2015, 9);	
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
