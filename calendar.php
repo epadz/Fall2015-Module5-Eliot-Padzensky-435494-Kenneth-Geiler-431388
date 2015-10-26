@@ -5,6 +5,23 @@ $loggedIn = true;
 if(!isset($_SESSION['username'])){
 	$loggedIn = false;
 }
+
+if (!isset($_SESSION['username'])) {
+    ?>
+    <script type="text/javascript">
+    	var myClasses = $(".addEv");
+   	 i = 0;
+   	 l = myClasses.length;
+
+	for (i; i < l; i++) {
+    	myClasses[i].style.display = 'none';
+	};
+    </script>
+    <?php
+
+}
+
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -24,7 +41,7 @@ var uid = <?php echo (isset($_SESSION['uid']) ? $_SESSION['uid'] : 'null'); ?>;
 
 <body>
     <?php if($loggedIn){
-		echo'<a href="logout.php">logout</a>';
+		echo'<a href="./logout.php">logout</a>';
 	}else{
 		echo'<a href="login.php">log in or register</a>';
 	}
