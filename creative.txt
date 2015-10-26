@@ -2,11 +2,11 @@ Eliot Padzensky 435494
 Kenneth Geiler 431388
 
 // change to running instance
-http://ec2-52-88-111-193.us-west-2.compute.amazonaws.com/Fall2015-Module3-Eliot-Padzensky-435494-Kenneth-Geiler-431388/login.php
-http://ec2-52-88-111-193.us-west-2.compute.amazonaws.com/Fall2015-Module3-Eliot-Padzensky-435494-Kenneth-Geiler-431388/calendar.php
+http://ec2-52-88-111-193.us-west-2.compute.amazonaws.com/Fall2015-Module5-Eliot-Padzensky-435494-Kenneth-Geiler-431388/login.php
+http://ec2-52-88-111-193.us-west-2.compute.amazonaws.com/Fall2015-Module5-Eliot-Padzensky-435494-Kenneth-Geiler-431388/calendar.php
 
 //what is the login you have?
-Log in with username epadz password epadz or username batman password superman
+Log in with username eliot password eliot
 
 Creative elements:
 1)The CSS
