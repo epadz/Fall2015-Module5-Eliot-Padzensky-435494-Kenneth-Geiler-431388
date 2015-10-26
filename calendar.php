@@ -20,6 +20,9 @@ if(!isset($_SESSION['username'])){
 <script>
 var uid = <?php echo (isset($_SESSION['uid']) ? $_SESSION['uid'] : 'null'); ?>;
 var username = <?php echo (isset($_SESSION['username']) ? ("'" . $_SESSION['username'] . "'") : 'null'); ?>;
+<?php if(!$loggedIn){
+	echo '$(function(){$(".addEv").css("display","none")});';
+}?>
 </script>
 </head>
 
