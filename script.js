@@ -18,7 +18,7 @@ var state = 0; //0 = calendar, 1 = event add/edit
 var month = new Month(2015, 9);	
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var monthEvents;
-
+var tagCols = {none: '#9FF', meeting: '#6F6', birthday: '#F60', important: '#F00', reminder: '#ccc'};
 function nextMonth(){
 	month = month.nextMonth();
 	refreshCalendar();
@@ -123,17 +123,27 @@ function makeEvent(evData){
 	eeE = document.createElement("div");//editing tools
 	eeE.className = "evTool";
 	eeE.innerHTML = "e";
+	eeE.setAttribute("title", 'Edit This Event');
 	$(eeE).click(function(){prepEditEvent(evData.eventID);flip();});
 	
 	eeD = document.createElement("div");//editing tools
 	eeD.className = "evTool";
 	eeD.innerHTML = "x";
+	eeD.setAttribute("title", 'Delete This Event');
 	$(eeD).click(function(){deleteEvent(evData.eventID);});
 	
 	eeS = document.createElement("div");//editing tools
 	eeS.className = "evTool";
 	eeS.innerHTML = "s";
-	$(eeS).click(function(){window.location = 'mailto:?subject=event%20from%20my%20calendar&body=hi'});
+	eeS.setAttribute("title", 'Email This Event');
+	
+	var eET = username + " scheduled an event titled '" + evData.title + "' on " + evData.month + "/" + evData.day + "/"+ evData.year + " at " + evData.hour + ":" + evData.minute + " " + evData.ampm + "\nNOTE: " + evData.note;
+	if(eET.length > 150){
+		eET = eET.substring(0,150) + '...';
+	}
+	eET = encodeURIComponent(eET);
+	
+	$(eeS).click(function(){window.location = ("mailto:?subject=event%20from%20my%20calendar&body=" + eET)});
 	
 	et.appendChild(eh);
 	et.appendChild(em);
@@ -151,6 +161,8 @@ function makeEvent(evData){
 	ev.appendChild(ee);
 	
 	ev.setAttribute("data-eid", evData.eventID);
+	ev.setAttribute("title", evData.tag + '');
+	$(ev).css("background-color", tagCols[evData.tag + '']);
 	return ev;
 }
 //gets events for a month [0,11]
@@ -226,6 +238,7 @@ function prepareNew(ny, nm, nd){
 	$("#neDate").datepicker({
 		defaultDate:defDat
 	});
+	$("#neTag option[value='none']").attr("selected",true);
 	$("#deleteButton, #addButton").off("click");
 	$("#deleteButton").click(flip);
 	$("#addButton").click(addEvent);
@@ -270,6 +283,10 @@ function prepEditEvent(eid){
 	$("#neDate").datepicker({
 		defaultDate:defDat
 	});
+	$("#neHour").val(ce[0].hour + "");
+	$("#neMin").val(ce[0].minute + "");
+	$("#neAMPM").val(ce[0].ampm + "");
+	$("#neTag").val(ce[0].tag + "");
 	$("#deleteButton, #addButton").off("click");
 	$("#deleteButton").click(flip);
 	$("#addButton").click(function(){editEvent(eid);});
